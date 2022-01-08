@@ -1,0 +1,18 @@
+version: "2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "5000:8888"
+    links:
+      - mongo
+    environment: 
+     
+      MONGODB_URI: mongodb://localhost:27017/chatApplication
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
